@@ -45,11 +45,11 @@ because:
  - Manufacturer (object)
 
  * class Manufacturer():
- - id 
  - manufacturer_name
  - wholesale_cost
  - delivery_fee
  - taking_orders (bool) (extension)
+ - id 
 
 <!-- database relationships -->
  Manufacturer will have a one-to-many relationship with Product
