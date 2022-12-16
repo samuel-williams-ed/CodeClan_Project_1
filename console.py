@@ -3,6 +3,17 @@ from models.inventory_holding import Inventory_holding
 
 ########################## Load Test Objects ############################
 #load test Products
+
+# class Product():
+#  - name
+#  - description
+#  - model
+#  - type (Armour, hand-weapon, ranged_weapon, magical_weapon, util)
+#  - combat_strength
+#  - magical_item (boolean)
+#  - Manufacturer (object)
+#  - id
+
 test_product_1 = Product("Pickaxe",
 "A basic pickaxe, used to mine for ore and break up tough ground.",
 "Model X: Picker", False, "hand-weapon", 2)
