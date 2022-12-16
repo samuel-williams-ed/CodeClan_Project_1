@@ -28,27 +28,30 @@ because:
 
 <!-- class plans -->
 * class Inventory_holding():
- - id
- - advertised_name (name to be a 'marketing' version of the wholesellers name)
+ - advertised_name (to be a 'marketing' version of the wholesellers name)
  - number_in_stock
  - retail_price
  - Product (object)
+ - id
 
  * class Product():
- - id
  - name
  - description
  - model
  - type (Armour, hand-weapon, ranged_weapon, magical_weapon, util)
- - magical_item (boolean)
  - combat_strength
+ - magical_item (boolean)
  - Manufacturer (object)
+ > taking_orders (bool)
+ > wholesale_cost
+ - id
 
  * class Manufacturer():
  - manufacturer_name
- - wholesale_cost
+ > Address
+ > wholesale_cost
  - delivery_fee
- - taking_orders (bool) (extension)
+ > taking_orders (bool) (extension)
  - id 
 
 <!-- database relationships -->
@@ -112,6 +115,7 @@ Classes:
 - Combat_stats
 - Inventory_item
 - Manufacturer 
+
 * Plan *
 
 <!-- * +++++++ Original Brief ++++++++++ -->
