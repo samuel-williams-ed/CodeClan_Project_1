@@ -3,7 +3,7 @@ class Product():
         self.name = input_name
         self.descritpion = input_description
         self.magical = input_magical_bool
-        self.item_type = input_type
+        self.type = input_type
         self.combat_strength = input_combat_strength
 
     
