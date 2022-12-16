@@ -1,4 +1,5 @@
 * ======== Brief ========== *
+
 Fantasy Shop Inventory
 
 Build an app which allows a shopkeeper to track their shop's inventory. This is not an app which the customer will see, it is an admin/management app for the shop workers.
@@ -6,6 +7,94 @@ Build an app which allows a shopkeeper to track their shop's inventory. This is 
 Style & theme: 
 - Based on the early, fantasy-action-adventure, hand-held console games of the 1990's. 
  - Legend of Zelda: Link's Awakening DX (1998, colour version of the 1993 game)
+
+Fantasy Shop Inventory
+
+Build an app which allows a shopkeeper to track their shop's inventory. This is not an app which the customer will see, it is an admin/management app for the shop workers.
+
+Style & theme: 
+- Based on the early, fantasy-action-adventure, hand-held console games of the 1990's. 
+
+<!-- 
+Inventory_holding seperate from Product,
+because:
+- some inventory info won't be needed by product (ie., Ad_name, retail_price)
+- shop keeper would choose advertised_name, number_to_stock, & set retail_price - but wouldn't edit/set any of the procut details. So makes sense to handle them seperately.
+- possible multiple types of same product?
+- manufacturer could update the product but this wouldn't impact the Inventory_holding UNTIL the shop buys more!
+- shop could sub different manufacturers products under same name/price
+ -->
+
+
+<!-- class plans -->
+* class Inventory_holding():
+ - id
+ - advertised_name (name to be a 'marketing' version of the wholesellers name)
+ - number_in_stock
+ - retail_price
+ - Product (object)
+
+ * class Product():
+ - id
+ - name
+ - description
+ - model
+ - type (Armour, hand-weapon, ranged_weapon, magical_weapon, util)
+ - magical_item (boolean)
+ - combat_strength
+ - Manufacturer (object)
+
+ * class Manufacturer():
+ - id 
+ - manufacturer_name
+ - wholesale_cost
+ - delivery_fee
+ - taking_orders (bool) (extension)
+
+<!-- database relationships -->
+ Manufacturer will have a one-to-many relationship with Product
+ Inventory_holding will have a one-to-many repationship with Product (extension)
+
+extensions:
+- combat strength (product)
+- magical? Boolean (product)
+- Mage level required to handle (if required)(product)
+
+<!-- functionality -->
+
+The shop should be able to
+- show all inventory_items for sale
+- create an inventory_holding()
+- edit products in each inventory_holding
+
+A manufacturer should be able to
+- edit products
+- set taking_orders (extension)
+
+Shop should find items by:
+- advertised_name
+- Retail price
+- wholesale price
+- product.name (extension)
+- product.combat_strength (extension)
+- product.type (extension)
+- magical or not (extension)
+
+shop should filter by:
+- in stock
+- Retail price
+- product.type (extension)
+
+<!-- notes -->
+
+This might mean that it makes more sense for a car shop to track makes and models of cars. Or a bookstore might sell books by author, or by publisher, and not by manufacturer. You are free to name classes and tables as appropriate to your project.
+Show an inventory page, listing all the details for all the products in stock in a single view.
+As well as showing stock quantity as a number, the app should visually highlight "low stock" and "out of stock" items to the user.
+
+<!-- * ========= Brief End ========= * -->
+
+<!-- Original brief & disused edits below -->
+* original brief bits & pieces 
 
 MVP
 
@@ -23,65 +112,9 @@ Classes:
 - Combat_stats
 - Inventory_item
 - Manufacturer 
+* Plan *
 
-* class Inventory_holding
- - id
- <!-- name can be a plumped up version of the wholesellers name -->
- - name 
- - number_in_stock
- - retail_price
- - Product (object)
- - Manufacturer (object)
-
- * class Product()
- - id
- - name
- - description
- - magical_item (y/n)
- - combat_strength
-
- * class Manufacturer
- - id 
- - manufacturer_name
- - wholesale_cost
- - delivery_fee
-
-
-maybe:
-- combat strength
-- magical? Boolean
-- Mage level required to handle (if required)
-
-The inventory should track
-- manufacturers
-- name 
-- any other
-
-The shop can sell anything you like
-should be able
-- create
-- edit manufacturers
-- edit products
-
-Shop should find items by:
-- name
-- buying cost
-- selling cost
-- category
-
-shop should filter by:
-- in stock
-- price
-- category
-
-
-This might mean that it makes more sense for a car shop to track makes and models of cars. Or a bookstore might sell books by author, or by publisher, and not by manufacturer. You are free to name classes and tables as appropriate to your project.
-Show an inventory page, listing all the details for all the products in stock in a single view.
-As well as showing stock quantity as a number, the app should visually highlight "low stock" and "out of stock" items to the user.
-
-* ========= Brief End ========= *
-
-* +++++++ Original Brief ++++++++++
+<!-- * +++++++ Original Brief ++++++++++ -->
 Shop Inventory
 
 Build an app which allows a shopkeeper to track their shop's inventory. This is not an app which the customer will see, it is an admin/management app for the shop workers.
