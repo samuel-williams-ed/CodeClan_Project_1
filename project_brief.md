@@ -54,6 +54,10 @@ because:
  > taking_orders (bool) (extension)
  - id 
 
+ <!-- class relationships -->
+ Inventory_holding needs a Product
+ Product need a Manufacturer
+
 <!-- database relationships -->
  Manufacturer will have a one-to-many relationship with Product
  Inventory_holding will have a one-to-many repationship with Product (extension)

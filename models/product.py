@@ -6,22 +6,17 @@ class Product():
     input_type,
     input_combat_strength,
     input_magical_bool,
-    id=None):
+    input_manufacturer_object,
+    input_taking_orders,
+    input_whoesale_cost,
+    _id=None):
         self.name = input_name
         self.descritpion = input_description
         self.model = input_model
         self.type = input_type
         self.combat_strength = input_combat_strength
         self.magical = input_magical_bool
-        self._id = id
-
-
-# class Product():
-#  - name
-#  - description
-#  - model
-#  - type (Armour, hand-weapon, ranged_weapon, magical_weapon, util)
-#  - combat_strength
-#  - magical_item (boolean)
-#  - Manufacturer (object)
-#  - id
+        self.manufacturer = input_manufacturer_object
+        self.taking_orders = input_taking_orders
+        self.wholesale_cost = input_whoesale_cost
+        self._id = _id
