@@ -42,16 +42,16 @@ because:
  - combat_strength
  - magical_item (boolean)
  - Manufacturer (object)
- > taking_orders (bool)
- > wholesale_cost
+ - taking_orders (bool)
+ - wholesale_cost
  - id
 
  * class Manufacturer():
  - manufacturer_name
- > Address
- > wholesale_cost
+ - Address
+ - wholesale_cost
  - delivery_fee
- > taking_orders (bool) (extension)
+ - taking_orders (bool) (extension)
  - id 
 
  <!-- class relationships -->
