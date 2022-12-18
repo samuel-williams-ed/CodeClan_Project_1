@@ -1,5 +1,4 @@
 .shop_popup_container{
-    display: flex;
     /* image 203 x 98 */
     width: 609px;
     height: 294px;
@@ -11,13 +10,46 @@
     background-position: center;
 }
 
-#inventory_bar_top_border_container {
+#inventory_display_top_row_border_container {
+    /*  68 + 17 = 85 */
     box-sizing: border-box;
     height: 85px;
-    /*  68 + 17 = 85 */
     padding-top: 17px;
     padding-left: 17px;
     width: 100%;
+}
+
+#inventory_display_avatar_block_container{
+    height: 209px;
+    width: 230px;
+    box-sizing: border-box;
+
+    display: flex;
+    /* flex-direction: column; */
+    padding-top: 16px;
+    padding-left: 18px;
+    padding-bottom: 17px;
+    padding-right: 7px;
+}
+
+.avatar_block_items_row {
+    height: 100%;
+    width: 60px;
+
+    box-sizing: border-box;
+    padding-top: 7px;
+    padding-left: 7px;
+}
+
+#inventory_display_avatar_container {
+    width: 84px;
+    padding-top: 34px;
+    padding-left: 4px;
+}
+#avatar_item_container{
+    height: 108px;
+    width: 78px;
+    background-image: none;
 }
 
 .items_row{
@@ -35,6 +67,8 @@
     height: 48px;
     padding: 6px;
     margin-right: 6px;
+    /* bottom margin for the avatar block */
+    margin-bottom: 5px;
     border-radius: 2px;
     /* background-color: aqua; */
     background-image: url("/static/assets/menu_bar/Inventory_background.png");
