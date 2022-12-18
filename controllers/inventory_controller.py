@@ -1,18 +1,15 @@
 from flask import render_template, redirect
 from flask import Blueprint
 
+from console import get_inventory as get_inventory_list
 from models.inventory_holding import Inventory_holding
 # import repositories.book_repository as book_repository
 # import repositories.author_repository as author_repository
 
-shop_blueprint = Blueprint("books", __name__)
+shop_blueprint = Blueprint("shops", __name__)
 
-@shop_blueprint.route("/shop")
+@shop_blueprint.route("/")
 def tasks():
-    # books = book_repository.select_all()
-    return render_template("/shop/index.html")
+    inventory_list = get_inventory_list()
+    return render_template("/index.html", inventory_list=inventory_list)
 
-# @books_blueprint.route("/books/<id>/delete", methods=["POST"])
-# def destroy(id):
-#     book_repository.delete(int(id))
-#     return redirect("/books")

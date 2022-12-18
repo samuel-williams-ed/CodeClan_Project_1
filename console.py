@@ -25,8 +25,10 @@ test_inventory_item_2 = Inventory_holding(
 test_inventory_list = [test_inventory_item_1, test_inventory_item_2]
 
 
+####################### test functions ############################
 
-
+def get_inventory():
+    return test_inventory_list
 
 ########################## Printing ############################
 # general purpose method to print all lists

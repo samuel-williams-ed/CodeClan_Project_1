@@ -28,7 +28,7 @@ because:
 
 <!-- class plans -->
 * class Inventory_holding():
- - advertised_name (to be a 'marketing' version of the wholesellers name)
+ - display_name (to be a 'marketing' version of the wholesellers name)
  - number_in_stock
  - retail_price
  - Product (object)
