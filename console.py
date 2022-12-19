@@ -30,6 +30,10 @@ test_inventory_list = [test_inventory_item_1, test_inventory_item_2]
 ####################### repository functions ############################
 
 
+print(" (console) ")
+print(test_manufacturer_1._id)
+
+print("")
 print("Saving test_product_1")
 print(prod_rep.save(test_product_1))
 
@@ -46,5 +50,5 @@ def print_list(list):
         print(item.__dict__)
 
 # print_list(test_product_list)
-print_list(test_manufacturer_list)
+# print_list(test_manufacturer_list)
 # print_list(test_inventory_list)

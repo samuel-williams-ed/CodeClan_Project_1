@@ -1,0 +1,48 @@
+from db.run_sql import run_sql
+
+from models.manufacturer import Manufacturer
+
+    #value passed in SQL db for manufacturer and supplier is the id only
+    #when we pull data dfrom db we use id
+    #to create and return an instance of manufacturer that is within this instance of product
+
+
+# class Manufacturer():
+#     def __init__(self,
+#     input_name,
+#     input_address,
+#     input_delivery_fee,
+#     _id=None):
+
+def save(manufacturer_object):
+
+    print(f"Debug: testing save(): product.name = {manufacturer_object.name} || id = {manufacturer_object._id}")
+
+    sql = "INSERT INTO suppliers (name, address, delivery_fee) VALUES (%s, %s, %s) RETURNING *"
+
+    values = [manufacturer_object.name,
+    manufacturer_object.address,
+    manufacturer_object.delivery_fee]
+
+    print("")
+    print(f"Debug: manufacturer_object _id = {manufacturer_object.manufacturer._id}")   
+
+    print("")
+    print(f"Debug: values = {values}")    
+    
+    query_results = run_sql(sql, values)
+
+    print("")
+    print(f"Debug: query result = {query_results}")   
+
+    ### return product with SQL db id ###
+
+    # take first returned object
+    # query_result = query_results[0]
+    # TODO get id value
+
+    # TODO build manufacturer instance from SQL data
+
+    # TODO attach manufacturer_object to product being returned
+
+    return query_results

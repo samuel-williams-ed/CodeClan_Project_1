@@ -27,6 +27,9 @@ def save(product):
     values = [product.name, product.description, product.model, product.type, product.combat_strength, product.manufacturer._id, product.taking_orders, product.wholesale_cost]
 
     print("")
+    print(f"Debug: manufacturer_object _id = {product.manufacturer._id}")   
+
+    print("")
     print(f"Debug: values = {values}")    
     
     query_results = run_sql(sql, values)
