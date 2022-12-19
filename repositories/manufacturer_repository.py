@@ -33,4 +33,7 @@ def save(manufacturer_object):
 
 
 def get_by_id(input_id):
-    
+    sql = "SELECT * FROM suppliers WHERE id=%s"
+    values = [input_id]
+    query_results = run_sql(sql, values)
+    return query_results[0]

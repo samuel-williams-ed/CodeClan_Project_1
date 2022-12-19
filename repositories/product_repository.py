@@ -58,7 +58,7 @@ def save(product):
     manufacturer_id = query_result['manufacturer_object_id']
 
     # TODO build manufacturer instance from SQL data
-    #get manufacturer by id
+    manu_rep.get_by_id(manufacturer_id)
 
     #TODO build product instance:
     result = Product(query_result['name'],
