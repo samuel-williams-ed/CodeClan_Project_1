@@ -38,8 +38,7 @@ def get_by_id(input_id):
     query_results = run_sql(sql, values)
     query = query_results[0]
     # print(f"debug: manu_repo.get_by_id: query = \n{query}")
-
-    result = Manufacturer(query['name'], query['address'], query['delivery_fee'], query['id'])
+    return Manufacturer(query['name'], query['address'], query['delivery_fee'], query['id'])
     # print(f"debug: manu_rep.get_by_id: n\{result.__dict__}")
-    return result
+    # return result
 
