@@ -46,7 +46,7 @@ test_inventory_list = [test_inventory_item_1, test_inventory_item_2]
 # print("")
 # print(f"Manufacturer._id from Product: {test_product_1.manufacturer._id}")
 test_product_1 = prod_rep.save(test_product_1)
-print(f"test_prod_1: \n{test_product_1.__dict__}")
+print(f"console: test_prod_1: \n{test_product_1.__dict__}")
 
 ####################### test functions ############################
 
