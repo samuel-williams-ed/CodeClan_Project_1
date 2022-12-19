@@ -1,5 +1,6 @@
 SHOULD
 - check RESTful names in controller
+- CREATE TABLE suppliers
 
 
 WOULD
