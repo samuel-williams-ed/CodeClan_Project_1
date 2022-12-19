@@ -28,4 +28,4 @@ def check_data():
     return None
 
 build_test_data()
-# check_data()
+check_data()
