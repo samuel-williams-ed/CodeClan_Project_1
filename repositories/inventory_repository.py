@@ -1,0 +1,58 @@
+from db.run_sql import run_sql
+import repositories.product_repository as prod_repo
+from models.inventory_holding import Inventory_holding
+
+
+def save(input_inventory_object):
+
+    # print("")
+    # print("saving inventory: ")
+
+    # print("")
+    # print(f"Debug: inventory_repo: save(): \nproduct.name = {product.name} || id = {product._id} \nProduct_manufacturer_id = {product.manufacturer._id}")
+
+
+    sql = "INSERT INTO products (display_name, number_in_stock, retail_price, product_object_id) VALUES (%s, %s, %s, %s) RETURNING *"
+
+#     id SERIAL PRIMARY KEY,
+#     display_name VARCHAR(255),
+#     number_in_stock INT,
+#     retail_price INT,
+#     product_object_id INT
+
+    values = [
+        input_inventory_object.display_name,
+        input_inventory_object.number_in_stock,
+        input_inventory_object.retail_price,
+        input_inventory_object.product_object.id
+]
+    # input_display_name, 
+    # input_number_in_stock, 
+    # input_retail_price, 
+    # input_product_object,
+    # _id=None):
+
+    # print("")
+    # print(f"Debug: inventory_repo: \nmanufacturer_object _id = {product.manufacturer._id}")   
+
+    # print("")
+    # print(f"Debug: inventory_repo: values = \n{values}")    
+    
+    query_results = run_sql(sql, values)
+    query_result = query_results[0]
+
+    # print("")
+    # print(f"Debug: inventory_repo: query result = {query_results}")   
+
+    ### return product with SQL db id ###
+    product_id = query_result['product_object_id']
+    product_object = prod_repo.get_by_id(product_id)
+
+    #TODO build inventory instance:
+    result = Inventory_holding(query_result['name'],
+    query_result['number_in_stock'],
+    query_result['retail_price'],
+    product_object,
+    query_result['id'])
+
+    return result
