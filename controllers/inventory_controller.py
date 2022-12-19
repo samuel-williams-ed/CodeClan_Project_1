@@ -1,7 +1,7 @@
 from flask import render_template, redirect
 from flask import Blueprint
 
-from console_build import get_inventory as get_inventory_list, get_inventory_list_length
+from console_build import get_inventory, get_inventory_list_length
 from models.inventory_holding import Inventory_holding
 import repositories.product_repository as prod_rep
 # import repositories.book_repository as book_repository
@@ -11,7 +11,7 @@ shop_blueprint = Blueprint("shops", __name__)
 
 @shop_blueprint.route("/example")
 def example():
-    inventory_list = get_inventory_list()
+    inventory_list = get_inventory() #list
     return render_template("/example.html", inventory_list=inventory_list)
 
 @shop_blueprint.route("/")

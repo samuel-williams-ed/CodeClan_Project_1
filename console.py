@@ -7,9 +7,16 @@ from console_build import test_product_list, test_inventory_list, test_manufactu
 import repositories.manufacturer_repository as manu_rep
 import repositories.product_repository as prod_rep
 
+from console_build import load_and_save_test_data as build_test_data
+
 ####################### test functions ############################
+print("\n############## console.py ####################\n")
 
-
+# general purpose method to print all lists
+def print_list(list):
+    for item in list:
+        print("")
+        print(item.__dict__)
 
 def check_data():
     print("\ntest_product_list:")
@@ -20,11 +27,5 @@ def check_data():
     print_list(test_inventory_list)
     return None
 
-########################## Printing ############################
-# general purpose method to print all lists
-def print_list(list):
-    for item in list:
-        print("")
-        print(item.__dict__)
-
+build_test_data()
 # check_data()

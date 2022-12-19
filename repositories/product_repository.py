@@ -30,6 +30,7 @@ def save(product):
     query_result['taking_orders'],
     query_result['wholesale_cost'],
     query_result['id'])
+    print("product_repo: saved a new Product\n")
     return result
 
 def select_all_products():
