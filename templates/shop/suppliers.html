@@ -6,13 +6,21 @@
 <body>
     <div>
         <h2>Testing Block</h2>
-        <div id="test_name">
-            <p>Product: </p>
-            <p>Description: </p>
-            <p>Model:</p>
-            <p>Type: </p>
-            <p>Strength: </p>
+        {% for product in product_list %}
+        <div class="product_details">
+            <p>Product: {{product.name}} </p>
+            {% if product.type == "hand-weapon" %}
+                <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01b.png" alt="Image of a golden hilted, steel sword"></div>
+            {% elif product.type == "util" %}
+                <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01c.png" alt="Image of a golden hilted, steel sword"></div>
+                {% endif %}
+            <p>Description: {{product.description}} </p>
+            <p>Model: {{product.model}}</p>
+            <p>Type: {{product.type}} </p>
+            <p>Strength: {{product.combat_strength}} </p>
+            <br>
         </div>
+        {% endfor %}
     </div>
 
     <!-- * class Product():

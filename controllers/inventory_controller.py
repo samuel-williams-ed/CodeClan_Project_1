@@ -3,6 +3,7 @@ from flask import Blueprint
 
 from console import get_inventory as get_inventory_list
 from models.inventory_holding import Inventory_holding
+import repositories.product_repository as prod_rep
 # import repositories.book_repository as book_repository
 # import repositories.author_repository as author_repository
 
@@ -27,5 +28,6 @@ def index_gear():
 
 @shop_blueprint.route('/shop/suppliers')
 def index_suppliers():
-    return render_template("/shop/inventory_display_block.html")
+    product_list = prod_rep.select_all_products()
+    return render_template("/shop/inventory_display_block.html", product_list=product_list)
 
