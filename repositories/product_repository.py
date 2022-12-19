@@ -55,3 +55,10 @@ def select_all_products():
     sql = " SELECT * FROM products"
     return run_sql(sql)
 
+def get_by_id(product_object_id):
+    sql = "SELECT * FROM products WHERE id=%s"
+    values = [product_object_id]
+    query_results = run_sql(sql, values)
+    query = query_results[0]
+    return Product(query['name'], query['description'], query['model'], ['type'], query['combat_strength'],
+    query['manufacturer_object_id'], query['taking_orders'], query['wholesale_cost'], query['id'])

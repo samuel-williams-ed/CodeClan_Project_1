@@ -12,7 +12,7 @@ def save(input_inventory_object):
     # print(f"Debug: inventory_repo: save(): \nproduct.name = {product.name} || id = {product._id} \nProduct_manufacturer_id = {product.manufacturer._id}")
 
 
-    sql = "INSERT INTO products (display_name, number_in_stock, retail_price, product_object_id) VALUES (%s, %s, %s, %s) RETURNING *"
+    sql = "INSERT INTO inventory (display_name, number_in_stock, retail_price, product_object_id) VALUES (%s, %s, %s, %s) RETURNING *"
 
 #     id SERIAL PRIMARY KEY,
 #     display_name VARCHAR(255),
@@ -24,7 +24,7 @@ def save(input_inventory_object):
         input_inventory_object.display_name,
         input_inventory_object.number_in_stock,
         input_inventory_object.retail_price,
-        input_inventory_object.product_object.id
+        input_inventory_object.product._id
 ]
     # input_display_name, 
     # input_number_in_stock, 
@@ -35,8 +35,8 @@ def save(input_inventory_object):
     # print("")
     # print(f"Debug: inventory_repo: \nmanufacturer_object _id = {product.manufacturer._id}")   
 
-    # print("")
-    # print(f"Debug: inventory_repo: values = \n{values}")    
+    print("")
+    print(f"Debug: inventory_repo: values = \n{values}")    
     
     query_results = run_sql(sql, values)
     query_result = query_results[0]
@@ -49,10 +49,9 @@ def save(input_inventory_object):
     product_object = prod_repo.get_by_id(product_id)
 
     #TODO build inventory instance:
-    result = Inventory_holding(query_result['name'],
+    result = Inventory_holding(query_result['display_name'],
     query_result['number_in_stock'],
     query_result['retail_price'],
     product_object,
     query_result['id'])
-
     return result
