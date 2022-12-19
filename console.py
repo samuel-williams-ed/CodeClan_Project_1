@@ -5,12 +5,20 @@ from models.manufacturer import Manufacturer
 import repositories.manufacturer_repository as manu_rep
 import repositories.product_repository as prod_rep
 
-########################## Load Test Objects ############################
+########################## Load & Save Test Objects ############################
 
 #load test Manufacturers
 test_manufacturer_1 = Manufacturer("test", "Testing", 3.00)
 test_manufacturer_2 = Manufacturer("Smithies", "1/15 Underground, Cavern Street.", 17)
 test_manufacturer_list = [test_manufacturer_1, test_manufacturer_2]
+
+# have to save these before passing them into the test_products
+# save manufacturer test_objects
+# print(" (console) ")
+test_manufacturer_1 = manu_rep.save(test_manufacturer_1)
+test_manufacturer_2 = manu_rep.save(test_manufacturer_2)
+# print(f"manu._id = {test_manufacturer_1._id}")
+# print(f"manu._id = {test_manufacturer_2._id}")
 
 #load test Products
 test_product_1 = Product("Pickaxe",
@@ -30,17 +38,15 @@ test_inventory_list = [test_inventory_item_1, test_inventory_item_2]
 
 ####################### repository functions ############################
 
-
-print(" (console) ")
-test_manufacturer_1 = manu_rep.save(test_manufacturer_1)
-test_manufacturer_2 = manu_rep.save(test_manufacturer_2)
-# print(f"manu._id = {test_manufacturer_1._id}")
-# print(f"manu._id = {test_manufacturer_2._id}")
-
-
+# save product test_objects
 # print("")
 # print("Saving test_product_1")
-# print(prod_rep.save(test_product_1))
+# print(f"Passed in a Manufacturer {test_manufacturer_1.__dict__}")
+# print(f"Passed in a Product \n{test_product_1.__dict__}")
+# print("")
+# print(f"Manufacturer._id from Product: {test_product_1.manufacturer._id}")
+test_product_1 = prod_rep.save(test_product_1)
+print(f"test_prod_1: \n{test_product_1.__dict__}")
 
 ####################### test functions ############################
 
@@ -55,5 +61,5 @@ def print_list(list):
         print(item.__dict__)
 
 # print_list(test_product_list)
-print_list(test_manufacturer_list)
+# print_list(test_manufacturer_list)
 # print_list(test_inventory_list)

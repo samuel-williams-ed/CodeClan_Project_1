@@ -31,7 +31,7 @@ CREATE TABLE products (
     type VARCHAR(255),
     combat_strength INT,
     manufacturer_object_id INT,
-    taking_orders INT,
+    taking_orders BOOLEAN,
     wholesale_cost INT,
     supplier_id INT
 );

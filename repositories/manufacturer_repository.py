@@ -7,13 +7,6 @@ from models.manufacturer import Manufacturer
     #to create and return an instance of manufacturer that is within this instance of product
 
 
-# class Manufacturer():
-#     def __init__(self,
-#     input_name,
-#     input_address,
-#     input_delivery_fee,
-#     _id=None):
-
 def save(manufacturer_object):
     # print(f"Debug: testing save(): product.name = {manufacturer_object.name} || id = {manufacturer_object._id}")
     sql = "INSERT INTO suppliers (name, address, delivery_fee) VALUES (%s, %s, %s) RETURNING *"
@@ -37,3 +30,7 @@ def save(manufacturer_object):
     result = Manufacturer(query_result['name'], query_result['address'], query_result['delivery_fee'], query_result['id'])
 
     return result
+
+
+def get_by_id(input_id):
+    

@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 
 from models.product import Product
+import repositories.manufacturer_repository as manu_rep
 
     #value passed in SQL db for manufacturer and supplier is the id only
     #when we pull data dfrom db we use id
@@ -20,34 +21,59 @@ from models.product import Product
 
 def save(product):
 
-    print(f"Debug: testing save(): product.name = {product.name} || id = {product._id}")
+    # print("")
+    # print("saving product: ")
 
-    sql = "INSERT INTO products (name, description, model, type, combat_strength, manufacturer_object_id, taking_orders, wholesale_cost) VALUES (%s, %s, %s, %s, %s, %s, %s) RETURNING *"
+    # print("")
+    # print(f"Debug: product_repo: save(): \nproduct.name = {product.name} || id = {product._id} \nProduct_manufacturer_id = {product.manufacturer._id}")
 
-    values = [product.name, product.description, product.model, product.type, product.combat_strength, product.manufacturer._id, product.taking_orders, product.wholesale_cost]
+    sql = "INSERT INTO products (name, description, model, type, combat_strength, manufacturer_object_id, taking_orders, wholesale_cost) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING *"
 
-    print("")
-    print(f"Debug: manufacturer_object _id = {product.manufacturer._id}")   
+    values = [product.name,
+        product.description,
+        product.model,
+        product.type,
+        product.combat_strength,
+        product.manufacturer._id,
+        product.taking_orders,
+        product.wholesale_cost]
 
-    print("")
-    print(f"Debug: values = {values}")    
+    # print("")
+    # print(f"Debug: product_repo: \nmanufacturer_object _id = {product.manufacturer._id}")   
+
+    # print("")
+    # print(f"Debug: product_repo: values = \n{values}")    
     
     query_results = run_sql(sql, values)
+    query_result = query_results[0]
 
-    print("")
-    print(f"Debug: query result = {query_results}")   
+    # print("")
+    # print(f"Debug: product_repo: query result = {query_results}")   
 
     ### return product with SQL db id ###
 
     # take first returned object
     # query_result = query_results[0]
     # TODO get id value
+    manufacturer_id = query_result['manufacturer_object_id']
 
     # TODO build manufacturer instance from SQL data
+    #get manufacturer by id
+
+    #TODO build product instance:
+    result = Product(query_result['name'],
+    query_result['description'],
+    query_result['model'],
+    query_result['type'],
+    query_result['combat_strength'],
+    manufacturer_id,
+    query_result['taking_orders'],
+    query_result['wholesale_cost'],
+    query_result['id'])
 
     # TODO attach manufacturer_object to product being returned
 
-    return query_results
+    return result
 
 
 
