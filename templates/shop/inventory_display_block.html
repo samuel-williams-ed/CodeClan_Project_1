@@ -1,6 +1,10 @@
 {% extends "shop/suppliers.html" %}
 {% block inventory_display_UX %}
 
+{% for product in product_list %}
+    <h3>{{product.name}}</h3>
+{% endfor %}
+
 
 <div class="shop_popup_container" alt="Box menu displaying items owned on the left hand side and options that can be bought on the left.">
 

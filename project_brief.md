@@ -158,3 +158,10 @@ What would you:
 STOP doing
 START doing
 CONTINUE doing 
+
+
+THEME:
+Mid brown - #AE6F49
+Mid darker brown - #9D6240
+Sand - #FED37F
+Dark border - #332018

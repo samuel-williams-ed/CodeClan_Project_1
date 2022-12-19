@@ -1,27 +1,51 @@
-
 {% extends "base.html" %}
 {% block content %}
 
-
 <body>
     <div>
-        <h2>Testing Block</h2>
+        <h2>ALL ITEMS</h2>
         {% for product in product_list %}
-        <div class="product_details">
-            <p>Product: {{product.name}} </p>
-            {% if product.type == "hand-weapon" %}
-                <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01b.png" alt="Image of a golden hilted, steel sword"></div>
-            {% elif product.type == "util" %}
-                <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01c.png" alt="Image of a golden hilted, steel sword"></div>
-                {% endif %}
-            <p>Description: {{product.description}} </p>
-            <p>Model: {{product.model}}</p>
-            <p>Type: {{product.type}} </p>
-            <p>Strength: {{product.combat_strength}} </p>
-            <br>
+        <div class="product_details_container">
+            <div class="product_details_container_row">
+                <div class="product_details image">
+                    {% if product.type == "hand-weapon" %}
+                        <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01b.png" alt="Image of a golden hilted, steel sword"></div>
+                    {% elif product.type == "util" %}
+                        <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01c.png" alt="Image of a golden hilted, steel sword"></div>
+                    {% endif %}
+                    </div>
+                <div class="product_details name">
+                    <p>{{product.name}}</p> </div>
+                <div class="product_details description">
+                    <p>{{product.description}}</p> </div>
+            </div>
+            <div class="product_details_container_row">
+                <div class="product_details type">
+                    <p>Model:</p>
+                    <p>{{product.model}}</p></div>
+                <div class="product_details type">
+                    <p>Type:</p>
+                    <p>{{product.type}}</p>
+                </div>
+                <div class="product_details type">
+                    <p>Strength:</p>
+                    <p>{{product.combat_strength}}</p>
+                </div>
+            </div>
         </div>
+        <br>
         {% endfor %}
     </div>
+
+    <!-- for every supplier extend a new block -->
+    {% block inventory_display_UX %}
+    {% endblock %}
+
+
+</body>
+
+{% endblock %}
+
 
     <!-- * class Product():
     - name
@@ -34,17 +58,3 @@
     - taking_orders (bool)
     - wholesale_cost
     - id -->
-
-    <!-- for every supplier extend a new block -->
-    {% block inventory_display_UX %}
-    {% endblock %}
-
-
-</body>
-
-{% endblock %}
-
-
-
-
-    
