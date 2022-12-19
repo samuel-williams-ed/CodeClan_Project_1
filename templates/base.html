@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <title>Shop Home</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div id="home_button_container">
+                <a href="/">Home</a>
+            </div>
+            <div id="supplier_button_container">
+                <a href="/shop/suppliers">Suppliers</a>
+            </div>
+            <div id="home_button_container">
+                <a href="/shop/gear">Gear</a>
+            </div>
+            <div id="home_button_container">
+                <a href="/shop/about">About</a>
+            </div>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+</body>

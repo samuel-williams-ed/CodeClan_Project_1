@@ -1,3 +1,14 @@
+SHOULD
+- check RESTful names in controller
+
+
+WOULD
+- assets for menu bar buttons
+
+COULD:
+ - little red x at bottom of icon when out-of-stock
+
+
 * ======== Brief ========== *
 
 Fantasy Shop Inventory
