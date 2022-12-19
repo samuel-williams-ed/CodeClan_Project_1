@@ -2,6 +2,7 @@ from models.product import Product
 from models.inventory_holding import Inventory_holding
 from models.manufacturer import Manufacturer
 
+import repositories.manufacturer_repository as manu_rep
 import repositories.product_repository as prod_rep
 
 ########################## Load Test Objects ############################
@@ -31,11 +32,15 @@ test_inventory_list = [test_inventory_item_1, test_inventory_item_2]
 
 
 print(" (console) ")
-print(test_manufacturer_1._id)
+test_manufacturer_1 = manu_rep.save(test_manufacturer_1)
+test_manufacturer_2 = manu_rep.save(test_manufacturer_2)
+# print(f"manu._id = {test_manufacturer_1._id}")
+# print(f"manu._id = {test_manufacturer_2._id}")
 
-print("")
-print("Saving test_product_1")
-print(prod_rep.save(test_product_1))
+
+# print("")
+# print("Saving test_product_1")
+# print(prod_rep.save(test_product_1))
 
 ####################### test functions ############################
 
@@ -50,5 +55,5 @@ def print_list(list):
         print(item.__dict__)
 
 # print_list(test_product_list)
-# print_list(test_manufacturer_list)
+print_list(test_manufacturer_list)
 # print_list(test_inventory_list)

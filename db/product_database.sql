@@ -17,7 +17,10 @@ DROP TABLE IF EXISTS suppliers;
 -- );
 
 CREATE TABLE suppliers(
-    id SERIAL PRIMARY KEY
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    address VARCHAR(255),
+    delivery_fee INT
 );
 
 CREATE TABLE products (
