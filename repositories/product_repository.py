@@ -4,15 +4,7 @@ from models.product import Product
 import repositories.manufacturer_repository as manu_rep
 
 def save(product):
-
-    # print("")
-    # print("saving product: ")
-
-    # print("")
-    # print(f"Debug: product_repo: save(): \nproduct.name = {product.name} || id = {product._id} \nProduct_manufacturer_id = {product.manufacturer._id}")
-
     sql = "INSERT INTO products (name, description, model, type, combat_strength, manufacturer_object_id, taking_orders, wholesale_cost) VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING *"
-
     values = [product.name,
         product.description,
         product.model,
@@ -21,24 +13,14 @@ def save(product):
         product.manufacturer._id,
         product.taking_orders,
         product.wholesale_cost]
-
-    # print("")
-    # print(f"Debug: product_repo: \nmanufacturer_object _id = {product.manufacturer._id}")   
-
-    # print("")
-    # print(f"Debug: product_repo: values = \n{values}")    
-    
     query_results = run_sql(sql, values)
-    query_result = query_results[0]
+    query_result = query_results[0] 
 
-    # print("")
-    # print(f"Debug: product_repo: query result = {query_results}")   
-
-    ### return product with SQL db id ###
+    # return Manufacturer object frin SQL db using id ###
     manufacturer_id = query_result['manufacturer_object_id']
     manufacturer_object = manu_rep.get_by_id(manufacturer_id)
 
-    #TODO build Product instance:
+    # build Product instance:
     result = Product(query_result['name'],
     query_result['description'],
     query_result['model'],
@@ -48,7 +30,6 @@ def save(product):
     query_result['taking_orders'],
     query_result['wholesale_cost'],
     query_result['id'])
-
     return result
 
 def select_all_products():

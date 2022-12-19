@@ -18,3 +18,4 @@ class Product():
         self.taking_orders = input_taking_orders
         self.wholesale_cost = input_wholesale_cost
         self._id = _id
+        print("\nProduct: a new product has been made\n")

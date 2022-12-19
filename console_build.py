@@ -33,8 +33,6 @@ test_product_list = [test_product_1, test_product_2]
 #save test products
 test_product_1 = prod_rep.save(test_product_1)
 test_product_2 = prod_rep.save(test_product_2)
-#print(f"console: test_prod_1: \n{test_product_1.__dict__}")
-# print(f"console: test_prod_2: \n{test_product_2.__dict__}")
 
 #load test Inventory_holdings
 test_inventory_item_1 = Inventory_holding(
@@ -62,6 +60,9 @@ test_inventory_list = [test_inventory_item_1, test_inventory_item_2]
 def get_inventory():
     return test_inventory_list
 
+def get_inventory_list_length():
+    return len(test_inventory_list)
+
 ########################## Printing ############################
 # general purpose method to print all lists
 def print_list(list):
@@ -69,6 +70,10 @@ def print_list(list):
         print("")
         print(item.__dict__)
 
-# print_list(test_product_list)
-# print_list(test_manufacturer_list)
+print("\nBuilding test")
+print("\ntest_product_list:")
+print_list(test_product_list)
+print("\ntest_manufacturer_list:")
+print_list(test_manufacturer_list)
+print("\ntest_inventory_list:")
 print_list(test_inventory_list)

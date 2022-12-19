@@ -1,7 +1,7 @@
 from flask import render_template, redirect
 from flask import Blueprint
 
-from console import get_inventory as get_inventory_list
+from console_build import get_inventory as get_inventory_list, get_inventory_list_length
 from models.inventory_holding import Inventory_holding
 import repositories.product_repository as prod_rep
 # import repositories.book_repository as book_repository
@@ -29,5 +29,7 @@ def index_gear():
 @shop_blueprint.route('/shop/suppliers')
 def index_suppliers():
     product_list = prod_rep.select_all_products()
+    print(f"\n debug: inventory_console: \nindex_suppliers: product_list: \n{product_list}")
+    print(f"debug: length of list: {get_inventory_list_length()}")
     return render_template("/shop/inventory_display_block.html", product_list=product_list)
 

@@ -10,25 +10,13 @@ from models.manufacturer import Manufacturer
 def save(manufacturer_object):
     # print(f"Debug: testing save(): product.name = {manufacturer_object.name} || id = {manufacturer_object._id}")
     sql = "INSERT INTO suppliers (name, address, delivery_fee) VALUES (%s, %s, %s) RETURNING *"
-    values = [manufacturer_object.name,
-    manufacturer_object.address,
-    manufacturer_object.delivery_fee]
-
-    # print("")
-    # print(f"Debug: manufacturer_object _id = {manufacturer_object._id}")   
-
-    # print("")
-    # print(f"Debug: values = {values}")    
-    
+    values = [
+        manufacturer_object.name,
+        manufacturer_object.address,
+        manufacturer_object.delivery_fee]
     query_results = run_sql(sql, values)
-
-    # print("")
-    # print(f"Debug: query result = {query_results}")   
-
     query_result = query_results[0]
-    manufacturer_id = query_result['id']
     result = Manufacturer(query_result['name'], query_result['address'], query_result['delivery_fee'], query_result['id'])
-
     return result
 
 
