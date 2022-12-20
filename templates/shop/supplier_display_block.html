@@ -1,10 +1,5 @@
-{% extends "shop/suppliers.html" %}
+{% extends "shop/products.html" %}
 {% block inventory_display_UX %}
-
-{% for product in product_list %}
-    <h3>{{product.name}}</h3>
-{% endfor %}
-
 
 <div class="shop_popup_container" alt="Box menu displaying items owned on the left hand side and options that can be bought on the left.">
 
@@ -22,7 +17,7 @@
             
         </span>
     </div>
-    
+
     <div id="inventory_display_avatar_block_container">
         <div class="avatar_block_items_row">
             <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01a.png" alt="Image of a green hilted, wooden sword"></div>
@@ -45,6 +40,9 @@
             <p>and other data</p>
         </div>
     </div>
+    
+    
+    
 </div>
 
 
