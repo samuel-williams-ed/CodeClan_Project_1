@@ -65,8 +65,7 @@ def new():
     return redirect('/shop/new')
 
 
-
-
+# show inventory pages
 @shop_blueprint.route('/shop/inventory/<inventory_id>', methods=["POST"])
 def show_suppliers(inventory_id):
     inventory_object = invent_rep.get_by_id(int(inventory_id))
@@ -76,7 +75,6 @@ def show_suppliers(inventory_id):
 def show_suppliers_get(inventory_id):
     inventory_object = invent_rep.get_by_id(int(inventory_id))
     return render_template("shop/inventory_display_block.html", inventory_object=inventory_object)
-
 
 
 
