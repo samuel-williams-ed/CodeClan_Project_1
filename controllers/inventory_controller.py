@@ -46,6 +46,26 @@ def index_suppliers():
     return render_template("/shop/supplier_display_block.html", product_list=cleaned_product_list)
 
 
+# Create new Inventory_holdings
+@shop_blueprint.route('/shop/new')
+def new_form():
+    list_of_products = prod_rep.select_all_products()
+    return render_template('/shop/new.html', list_of_products=list_of_products)
+
+@shop_blueprint.route('/shop/new', methods=['POST'])
+def new():
+    display_name = request.form['display_name']
+    number_in_stock = int(request.form['number_in_stock'])
+    retail_price = request.form['retail_price']
+    product_id = request.form['product_id']
+    product = prod_rep.get_by_id(product_id)
+    new_inventory = Inventory_holding(display_name, number_in_stock, retail_price, product)
+    invent_rep.save(new_inventory)
+    print(f"\ninventory_controller: new(): new inventory has been created!\n{new_inventory}")
+    return redirect('/shop/new')
+
+
+
 
 @shop_blueprint.route('/shop/inventory/<inventory_id>', methods=["POST"])
 def show_suppliers(inventory_id):

@@ -73,9 +73,16 @@
                 <p>Stock Holding:</p>
                 <p>{{ inventory_object.number_in_stock }}</p>
             </div>
+            <!-- button to add to stock -->
+            {% if inventory_object.product.taking_orders == True %}
             <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/edit_stock_holding" method="POST">
                 <input type="image" value="selected_id" class="item_icon" src="/static/assets/misc/coin_05d.png" alt="Buy more inventory into stock holding">
             </form>
+            {% else %}
+            <div class="item_container greyscale">
+                <image class="item_icon greyscale" src="/static/assets/misc/coin_05d.png"></image>
+            </div>
+            {% endif %}
         </div>
         
         <section class="product_details_container_row">

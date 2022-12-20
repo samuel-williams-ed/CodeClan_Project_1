@@ -3,6 +3,17 @@
 
 <body>
 
+    <section class="container left">
+        <div class="product_details">
+            <h2> Create New </h2>
+        </div>
+        <div class="item_container">
+            <a href="/shop/new"> 
+                <img class="item_icon" src="/static/assets/misc/staff_03a.png" alt="Magical wand. Select to create a new inventory item!">
+            </a>
+        </div>
+    </section>
+
     {% for inventory_object in inventory_list %}
 
     <h2>{{ inventory_object.display_name }}</h2>

@@ -35,7 +35,30 @@ def save(product):
 
 def select_all_products():
     sql = " SELECT * FROM products"
-    return run_sql(sql)
+    query_results = run_sql(sql)
+    final_list = []
+    for query_result in query_results:
+
+        # return Manufacturer object frin SQL db using id ###
+        manufacturer_id = query_result['manufacturer_object_id']
+        manufacturer_object = manu_rep.get_by_id(manufacturer_id)
+
+        # build new product to add to list
+        new_instance = Product(query_result['name'],
+        query_result['description'],
+        query_result['model'],
+        query_result['type'],
+        query_result['combat_strength'],
+        manufacturer_object,
+        query_result['taking_orders'],
+        query_result['wholesale_cost'],
+        query_result['id'])
+        
+        final_list.append(new_instance)
+    print(f"prod_rep: all products selected")
+    return final_list
+
+
 
 def get_by_id(product_object_id):
     sql = "SELECT * FROM products WHERE id=%s"

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Create New:</h2>
+
+<form action="/shop/new" method="POST" id="create_new_inventory">
+    
+    <div class="product_details_container">
+        <div class="product_details_container_row">
+            <div class="product_details description">
+                <label for="display_name">Display Name </label>
+                <input type="text" id="create_new_inventory" name="display_name" required>
+                <input type="image" alt="submit", src="/static/assets/misc/key_01d.png">
+            </div>
+        </div>
+        <div class="product_details_container_row">
+            <div class="product_details description">
+                <label for="product">Select Product id </label>
+                <input type="text" id="create_new_inventory" name="product_id" required>
+                <input type="image" alt="submit", src="/static/assets/misc/key_01d.png">
+            </div>
+        </div>
+    </div>
+    <div class="product_details_container">
+        <div class="product_details_container_row">
+            <div class="product_details description">
+                <label for="number_in_stock">How Many to Order: </label>
+                <input type="text" id="create_new_inventory" name="number_in_stock" required>
+                <input type="image" alt="submit", src="/static/assets/misc/key_01d.png">
+            </div>
+        </div>
+        <div class="product_details_container_row">
+            <div class="product_details description">
+                <label for="retail_price">Set Retail Price </label>
+                <input type="text" id="create_new_inventory" name="retail_price" required>
+                <input type="image" alt="submit", src="/static/assets/misc/key_01d.png">
+            </div>
+        </div>
+    </div>
+</form>
+
+{% endblock %}

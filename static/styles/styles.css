@@ -199,3 +199,12 @@ form label {
     display: flex;
     width: 128px;
 }
+.greyscale {
+    filter: grayscale(1);
+}
+.container {
+    display: flex;
+}
+.left {
+    align-items: left;
+}
