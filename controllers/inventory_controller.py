@@ -49,3 +49,25 @@ def index_suppliers():
 def show_suppliers(inventory_id):
     inventory_object = invent_rep.get_by_id(int(inventory_id))
     return render_template("shop/inventory_display_block.html", inventory_object=inventory_object)
+
+@shop_blueprint.route('/shop/inventory/<inventory_id>/edit_submitted', methods=['POST'])
+def update_inventory_name(inventory_id):
+    inventory_object = invent_rep.get_by_id(inventory_id)
+    print(f"\nupdating the inventory item in the controller\n took data {request.form['display_name']}")
+    inventory_object.display_name = request.form['display_name']
+    # inventory_object.retail_price = request.form['retail_price']
+    invent_rep.save(inventory_object)
+    return redirect(f"/shop/inventory/{inventory_id}/edit")
+
+@shop_blueprint.route('/shop/inventory/<inventory_id>/edit', methods=['POST'])
+def edit_inventory(inventory_id):
+    inventory_object = invent_rep.get_by_id(int(inventory_id))
+    return render_template("shop/inventory_edit.html", inventory_object=inventory_object)
+
+@shop_blueprint.route('/shop/inventory/<inventory_id>/edit')
+def edit_inventory_get(inventory_id):
+    inventory_object = invent_rep.get_by_id(int(inventory_id))
+    return render_template("shop/inventory_edit.html", inventory_object=inventory_object)
+
+
+

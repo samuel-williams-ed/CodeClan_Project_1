@@ -2,7 +2,11 @@ from db.run_sql import run_sql
 import repositories.product_repository as prod_repo
 from models.inventory_holding import Inventory_holding
 
-
+# set this 
+def update(task):
+    sql = "UPDATE inventory SET (description, user_id, duration, completed) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [task.description, task.user.id, task.duration, task.completed, task.id]
+    run_sql(sql, values)
 
 def save(input_inventory_object):
     sql = "INSERT INTO inventory (display_name, number_in_stock, retail_price, product_object_id) VALUES (%s, %s, %s, %s) RETURNING *"

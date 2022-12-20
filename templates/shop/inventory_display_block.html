@@ -44,6 +44,20 @@
                 <p>{{ inventory_object.product.taking_orders }}</p>
             </div>
         </div>
+        <div class="product_details_container_row">
+            <!-- <div class="product_details"> -->
+                <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/edit" method="POST">
+                    <input type="image" value="selected_id" class="item_icon" src="/static/assets/books/book_01d.png" alt="Image of a green hilted, wooden sword">
+                </form>
+            <div class="product_details">
+                <p>ID:</p>
+                <p>#{{ inventory_object.id }}</p>
+            </div>
+            <div class="product_details">
+                <p>Available:</p>
+                <p>{{ inventory_object.product.taking_orders }}</p>
+            </div>
+        </div>
     </div>
 
 {% endblock %}
