@@ -1,5 +1,5 @@
-{% extends "shop/products.html" %}
-{% block inventory_display_UX %}
+{% extends "base.html" %}
+{% block content %}
 
 <div class="shop_popup_container" alt="Box menu displaying items owned on the left hand side and options that can be bought on the left.">
 
@@ -10,7 +10,7 @@
             <!-- take the id and pass into src for asset img -->
             <!-- pass the inventory id into the form ' action' -->
             {% for product in product_list %}
-            <form class="item_container" action="/shop/supplier/inventory/{{ loop.index }}" method="POST">
+            <form class="item_container" action="/shop/inventory/{{ loop.index }}" method="POST">
                 <input type="image" value="selected_id" class="item_icon" src="/static/assets/swords/sword_01a.png" alt="Image of a green hilted, wooden sword">
             </form>
             {% endfor %}

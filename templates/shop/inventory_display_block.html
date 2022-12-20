@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="product_details_container">
+        <div class="product_details_container_row">
+            
+            <div class="product_details image">
+                <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01b.png" alt="Image of a golden hilted, steel sword">
+                </div>
+            </div>
+
+            <div class="product_details name">
+                <p>{{ inventory_object.display_name }}</p>
+            </div>
+            <div class="product_details description">
+                <p>{{ inventory_object.product.description }}</p>
+            </div>
+        </div>
+
+        <div class="product_details_container_row">
+            <div class="product_details">
+                <p>Model:</p>
+                <p>{{ inventory_object.product.model }}</p></div>
+            <div class="product_details">
+                <p>Type:</p>
+                <p>{{ inventory_object.product.type }}</p>
+            </div>
+            <div class="product_details">
+                <p>Strength:</p>
+                <p>{{ inventory_object.product.combat_strength }}</p>
+            </div>
+        </div>
+    <div class="product_details_container">
+        <div class="product_details_container_row">
+            <div class="product_details">
+                <p>Manufacturer:</p>
+                <p>{{ inventory_object.product.manufacturer }}</p></div>
+            <div class="product_details">
+                <p>Cost:</p>
+                <p>£{{ inventory_object.product.wholesale_cost }}.00</p>
+            </div>
+            <div class="product_details">
+                <p>Available:</p>
+                <p>{{ inventory_object.product.taking_orders }}</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

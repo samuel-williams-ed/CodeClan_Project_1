@@ -22,10 +22,10 @@ def home():
 def index_about():
     return render_template("/shop/about.html")
 
-@shop_blueprint.route('/shop/gear')
+@shop_blueprint.route('/shop/inventory_all')
 def index_gear():
     inventory_list = invent_rep.select_all()
-    return render_template("/shop/gear.html", inventory_list=inventory_list )
+    return render_template("/shop/inventory_all.html", inventory_list=inventory_list )
 
 @shop_blueprint.route('/shop/suppliers')
 def index_suppliers():
@@ -45,7 +45,7 @@ def index_suppliers():
     # print(f"debug: length of list: {get_inventory_list_length()}")
     return render_template("/shop/supplier_display_block.html", product_list=cleaned_product_list)
 
-@shop_blueprint.route('/shop/supplier/inventory/<inventory_id>', methods=["POST"])
+@shop_blueprint.route('/shop/inventory/<inventory_id>', methods=["POST"])
 def show_suppliers(inventory_id):
     inventory_object = invent_rep.get_by_id(int(inventory_id))
-    return render_template("shop/supplier_display_block.html", inventory_object=inventory_object)
+    return render_template("shop/inventory_display_block.html", inventory_object=inventory_object)

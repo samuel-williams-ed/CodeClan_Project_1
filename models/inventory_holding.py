@@ -11,3 +11,9 @@ class Inventory_holding():
         self.product = input_product_object
         self.id = _id
 
+def add_stock(self, number):
+    self.number_in_stock += number
+    
+
+def remove_stock(self, number):
+    self.number_in_stock -= number
