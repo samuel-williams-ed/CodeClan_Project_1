@@ -15,16 +15,12 @@ print("\n############## console.py ####################\n")
 # general purpose method to print all lists
 def print_list(list):
     for item in list:
-        print("")
-        print(item.__dict__)
+        print(f"\n{item.__dict__}")
 
 def check_data():
-    print("\ntest_product_list:")
-    print_list(test_product_list)
-    print("\ntest_manufacturer_list:")
-    print_list(test_manufacturer_list)
-    print("\ntest_inventory_list:")
-    print_list(test_inventory_list)
+    print(f"\ntest_product_list: \n{test_product_list}")
+    print(f"\ntest_manufacturer_list: \n{test_manufacturer_list}")
+    print(f"\ntest_inventory_list: \n{test_inventory_list}")
     return None
 
 build_test_data()

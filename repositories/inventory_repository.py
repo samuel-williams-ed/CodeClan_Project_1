@@ -24,3 +24,19 @@ def save(input_inventory_object):
     product_object,
     query_result['id'])
     return result
+
+def get_by_id(input_id):
+    sql = "SELECT * FROM inventory WHERE id=%s"
+    values = [input_id]
+    query_results = run_sql(sql, values)
+    query_result = query_results[0]
+
+    product_id = query_result['product_object_id']
+    product_object = prod_repo.get_by_id(product_id)
+
+    result = Inventory_holding(query_result['display_name'],
+    query_result['number_in_stock'],
+    query_result['retail_price'],
+    product_object,
+    query_result['id'])
+    return result

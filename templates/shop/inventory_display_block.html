@@ -10,16 +10,16 @@
 
     <div id="inventory_display_top_row_border_container">
         <span class="items_row">
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01a.png" alt="Image of a green hilted, wooden sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01b.png" alt="Image of a golden hilted, steel sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01c.png" alt="Image of a blue hilted, steel sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01d.png" alt="Image of a black hilted, golden sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01a.png" alt="Image of a green hilted, wooden sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01b.png" alt="Image of a golden hilted, steel sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01c.png" alt="Image of a blue hilted, steel sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01d.png" alt="Image of a black hilted, golden sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01a.png" alt="Image of a green hilted, wooden sword"></div>
-            <div class="item_container"><img class="item_icon" src="/static/assets/swords/sword_01b.png" alt="Image of a golden hilted, steel sword"></div>
+            <!-- iterate through supplier holdings -->
+            <!-- if more than 10 (max in dislay asset) then stop -->
+            <!-- take the id and pass into src for asset img -->
+            <!-- pass the inventory id into the form ' action' -->
+            {% for product in product_list %}
+            <form class="item_container" action="/shop/supplier/inventory/{{ loop.index }}" method="POST">
+                <input type="image" value="selected_id" class="item_icon" src="/static/assets/swords/sword_01a.png" alt="Image of a green hilted, wooden sword">
+            </form>
+            {% endfor %}
+            
         </span>
     </div>
     
