@@ -19,35 +19,36 @@
 
         <div class="product_details_container_row">
             <div class="product_details">
-                <p>Model:</p>
-                <p>{{ inventory_object.product.model }}</p></div>
-            <div class="product_details">
                 <p>Type:</p>
-                <p>{{ inventory_object.product.type }}</p>
-            </div>
+                <p>{{ inventory_object.product.type  }}</p></div>
             <div class="product_details">
                 <p>Strength:</p>
                 <p>{{ inventory_object.product.combat_strength }}</p>
             </div>
+            <div class="product_details">
+                <p>Retail Price:</p>
+                <p>£{{ inventory_object.retail_price }}.00</p>
+            </div>
         </div>
+    </div>
     <div class="product_details_container">
         <div class="product_details_container_row">
             <div class="product_details">
                 <p>Manufacturer:</p>
                 <p>{{ inventory_object.product.manufacturer }}</p></div>
             <div class="product_details">
-                <p>Cost:</p>
-                <p>£{{ inventory_object.product.wholesale_cost }}.00</p>
-            </div>
-            <div class="product_details">
                 <p>Available:</p>
                 <p>{{ inventory_object.product.taking_orders }}</p>
+            </div>
+            <div class="product_details">
+                <p>Wholesale Cost:</p>
+                <p>£{{ inventory_object.product.wholesale_cost }}.00</p>
             </div>
         </div>
         <div class="product_details_container_row">
             <!-- <div class="product_details"> -->
                 <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/edit" method="POST">
-                    <input type="image" value="selected_id" class="item_icon" src="/static/assets/books/book_01d.png" alt="Image of a green hilted, wooden sword">
+                    <input type="image" value="selected_id" class="item_icon" src="/static/assets/books/book_01d.png" alt="Image of a book, click to edit inventory item">
                 </form>
             <div class="product_details">
                 <p>ID:</p>
@@ -57,6 +58,14 @@
                 <p>Available:</p>
                 <p>{{ inventory_object.product.taking_orders }}</p>
             </div>
+            <div class="product_details">
+                <p>Stock Holding:</p>
+                <p>{{ inventory_object.number_in_stock }}</p>
+            </div>
+            <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/edit_stock_holding" method="POST">
+                <input type="image" value="selected_id" class="item_icon" src="/static/assets/misc/coin_05d.png" alt="Buy more inventory into stock holding">
+            </form>
+
         </div>
     </div>
 

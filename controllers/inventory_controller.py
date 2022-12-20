@@ -45,10 +45,18 @@ def index_suppliers():
     # print(f"debug: length of list: {get_inventory_list_length()}")
     return render_template("/shop/supplier_display_block.html", product_list=cleaned_product_list)
 
+
 @shop_blueprint.route('/shop/inventory/<inventory_id>', methods=["POST"])
 def show_suppliers(inventory_id):
     inventory_object = invent_rep.get_by_id(int(inventory_id))
     return render_template("shop/inventory_display_block.html", inventory_object=inventory_object)
+
+@shop_blueprint.route('/shop/inventory/<inventory_id>')
+def show_suppliers_get(inventory_id):
+    inventory_object = invent_rep.get_by_id(int(inventory_id))
+    return render_template("shop/inventory_display_block.html", inventory_object=inventory_object)
+
+
 
 @shop_blueprint.route('/shop/inventory/<inventory_id>/edit_submitted', methods=['POST'])
 def update_inventory_name(inventory_id):
@@ -62,15 +70,24 @@ def update_inventory_name(inventory_id):
     print(f"Testing name has stuck to database\n display_name = {inventory_object.display_name} || id= {inventory_object.id}")
     return redirect(f"/shop/inventory/{inventory_id}/edit")
 
+
+
 @shop_blueprint.route('/shop/inventory/<inventory_id>/edit', methods=['POST'])
 def edit_inventory(inventory_id):
     inventory_object = invent_rep.get_by_id(int(inventory_id))
     return render_template("shop/inventory_edit.html", inventory_object=inventory_object)
 
+# shops buys an item from manufacturer and adds to number_in_stock
+@shop_blueprint.route('/shop/inventory/<inventory_id>/edit_stock_holding', methods=["POST"])
+def edit_inventory_stock_holding(inventory_id):
+    inventory_object = invent_rep.get_by_id(inventory_id)
+    inventory_object.number_in_stock += 1
+    invent_rep.update(inventory_object)
+    return redirect(f"/shop/inventory/{inventory_id}")
+
 @shop_blueprint.route('/shop/inventory/<inventory_id>/edit')
-def edit_inventory_get(inventory_id):
+def show_inventory_get(inventory_id):
     inventory_object = invent_rep.get_by_id(int(inventory_id))
     return render_template("shop/inventory_edit.html", inventory_object=inventory_object)
-
 
 
