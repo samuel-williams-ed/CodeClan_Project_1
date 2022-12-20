@@ -25,18 +25,26 @@ def load_and_save_test_data():
     print("Building & saving Products\n")
     test_product_1 = Product("Pickaxe", "A basic pickaxe, used to mine for ore and break up tough ground.", "Model X: Picker", "hand-weapon", 2, test_manufacturer_1, True, 3)
     test_product_2 = Product("Sword", "A standard issue short sword. Used for stabbing, slashing, and general purpose swording.","SND03-27-B", "util", 2, test_manufacturer_2, True, 4)
+    test_product_3 = Product("Book of Python", "It is rumoured the pages of this tomb contain a deadly vemon. The unwary and unwitting may find themselves mysteriously transfixed for hours at a time.", "21/11/2022-e62", 'util', 0, test_manufacturer_1, True, 24)
+    test_product_4 = Product("Longsaber", "This two handed broad-sword is a must have for any self-respecting castle arsenal.", "34-B Wailer", "hand-weapon", 12, test_manufacturer_2, False, 35)
     #save test products
     test_product_1 = prod_rep.save(test_product_1)
     test_product_2 = prod_rep.save(test_product_2)
-    test_product_list.append([test_product_1, test_product_2])
+    test_product_3 = prod_rep.save(test_product_3)
+    test_product_4 = prod_rep.save(test_product_4)
+    test_product_list.append([test_product_1, test_product_2, test_product_3, test_product_4])
     #load test Inventory_holdings
     print("Building & saving Inventory_holdings\n")
     test_inventory_item_1 = Inventory_holding("Basics Range Pick-axe", 8, 8, test_product_1)
     test_inventory_item_2 = Inventory_holding("Basics Range Short Sword", 20, 6, test_product_2)
+    test_inventory_item_3 = Inventory_holding("Intermediate Python", 2, 50, test_product_3)
+    test_inventory_item_4 = Inventory_holding("Swing Big with this Greatsword!", 5, 75, test_product_4)
     # save inventory items
     test_inventory_item_1 = invent_rep.save(test_inventory_item_1)
     test_inventory_item_2 = invent_rep.save(test_inventory_item_2)
-    test_inventory_list.append([test_inventory_item_1, test_inventory_item_2])
+    test_inventory_item_3 = invent_rep.save(test_inventory_item_3)
+    test_inventory_item_4 = invent_rep.save(test_inventory_item_4)
+    test_inventory_list.append([test_inventory_item_1, test_inventory_item_2, test_inventory_item_3, test_inventory_item_4])
 
 ####################### test functions ############################
 

@@ -12,7 +12,7 @@
             
             <div class="product_details image">
                 <!--  picture links to full item -->
-                <form class="item_container" action="/shop/inventory/{{ loop.index }}" method="POST">
+                <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}" method="POST">
                     <input type="image" value="selected_id" class="item_icon" src="/static/assets/swords/sword_01a.png" alt="Image of a green hilted, wooden sword">
                 </form>
             </div>
@@ -25,14 +25,21 @@
         </div>
 
         <div class="product_details_container_row">
-            <div class="product_details type">
-                <p>Model:</p>
-                <p>{{ inventory_object.product.model }}</p></div>
-            <div class="product_details type">
+            <div class="product_details">
+                <p>Stock</p>
+                <div class="item_container">
+                    <div class="item_icon" id="inventory_number_in_stock_number_text">
+                        <p>{{inventory_object.number_in_stock}}</p>
+                    </div>
+                </div>
+
+            </div>
+                
+            <div class="product_details">
                 <p>Type:</p>
                 <p>{{ inventory_object.product.type }}</p>
             </div>
-            <div class="product_details type">
+            <div class="product_details">
                 <p>Strength:</p>
                 <p>{{ inventory_object.product.combat_strength }}</p>
             </div>

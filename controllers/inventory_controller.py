@@ -55,8 +55,11 @@ def update_inventory_name(inventory_id):
     inventory_object = invent_rep.get_by_id(inventory_id)
     print(f"\nupdating the inventory item in the controller\n took data {request.form['display_name']}")
     inventory_object.display_name = request.form['display_name']
-    # inventory_object.retail_price = request.form['retail_price']
-    invent_rep.save(inventory_object)
+    print(f"name of object now = {inventory_object.display_name} || id = {inventory_object.id}\n")
+    inventory_object.retail_price = request.form['retail_price']
+    invent_rep.update(inventory_object)
+    inventory_object = invent_rep.get_by_id(inventory_id)
+    print(f"Testing name has stuck to database\n display_name = {inventory_object.display_name} || id= {inventory_object.id}")
     return redirect(f"/shop/inventory/{inventory_id}/edit")
 
 @shop_blueprint.route('/shop/inventory/<inventory_id>/edit', methods=['POST'])

@@ -8,12 +8,24 @@
 <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}" method="POST">
     <input type="image" value="selected_id" class="item_icon" src="/static/assets/swords/sword_01a.png" alt="Image of a green hilted, wooden sword">
 </form>
-
-<form action="/shop/inventory/{{ inventory_object.id }}/edit_submitted" method="POST">
-    <label for="display_name">Display Name </label>
-    <input type="text" id="display_name" name="display_name" value="{{ inventory_object.display_name }}">
-    <input type="submit" value="SAVE">
-</form>
+<div class="product_details_container">
+    <form action="/shop/inventory/{{ inventory_object.id }}/edit_submitted" method="POST" id="edit_inventory_form">
+        <div class="product_details_container_row">
+            <div class="product_details description">
+                <label for="display_name">Display Name </label>
+                <input type="text" id="edit_inventory_form" name="display_name" value="{{ inventory_object.display_name }}">
+                <input type="image" alt="submit", src="/static/assets/misc/key_01d.png">
+            </div>
+        </div>
+        <div class="product_details_container_row">
+            <div class="product_details description">
+                <label for="display_name">Retail Price </label>
+                <input type="text" id="edit_inventory_form" name="retail_price" value="{{ inventory_object.retail_price }}">
+                <input type="image" alt="submit", src="/static/assets/misc/key_01d.png">
+            </div>
+        </div>
+    </form>
+</div>
 
 
 {% endblock %}
