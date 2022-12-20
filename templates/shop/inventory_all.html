@@ -26,9 +26,19 @@
 
         <div class="product_details_container_row">
             <div class="product_details">
-                <p>Number in Stock</p>
+                {% if inventory_object.number_in_stock == 0 %}
+                    <div class="product_details">
+                        <img src="/static/assets/misc/skull_01b.png" alt="Skull icon, warning of low stock!">
+                    </div>
+                {% elif inventory_object.number_in_stock <= 10 %}
+                    <div class="product_details">
+                        <img src="/static/assets/misc/skull_01a.png" alt="Skull icon, warning of low stock!">
+                    </div>
+                {% endif %}
+                <p>Stocking:</p>
                 <p>{{inventory_object.number_in_stock}}</p>
             </div>
+
                 
             <div class="product_details">
                 <p>Type:</p>
@@ -38,6 +48,9 @@
                 <p>Strength:</p>
                 <p>{{ inventory_object.product.combat_strength }}</p>
             </div>
+            <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}" method="POST">
+                <input type="image" value="selected_id" class="item_icon" src="/static/assets/books/book_03d.png" alt="Image of a green hilted, wooden sword">
+            </form>
         </div>
     </div>
     {% endfor %}

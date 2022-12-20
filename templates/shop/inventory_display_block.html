@@ -34,11 +34,11 @@
     <div class="product_details_container">
         <div class="product_details_container_row">
             <div class="product_details">
-                <p>Manufacturer:</p>
-                <p>{{ inventory_object.product.manufacturer }}</p></div>
+                <p>Supplier:</p>
+                <p>{{ inventory_object.product.manufacturer.name }}</p></div>
             <div class="product_details">
-                <p>Available:</p>
-                <p>{{ inventory_object.product.taking_orders }}</p>
+                <p>Address:</p>
+                <p>{{ inventory_object.product.manufacturer.address }}</p>
             </div>
             <div class="product_details">
                 <p>Wholesale Cost:</p>
@@ -47,9 +47,11 @@
         </div>
         <div class="product_details_container_row">
             <!-- <div class="product_details"> -->
-                <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/edit" method="POST">
-                    <input type="image" value="selected_id" class="item_icon" src="/static/assets/books/book_01d.png" alt="Image of a book, click to edit inventory item">
-                </form>
+                <div class="product_details image">
+                    <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/edit" method="POST">
+                        <input type="image" value="selected_id" class="item_icon" src="/static/assets/books/book_01d.png" alt="Image of a book, click to edit inventory item">
+                    </form>
+                </div>
             <div class="product_details">
                 <p>ID:</p>
                 <p>#{{ inventory_object.id }}</p>
@@ -59,14 +61,36 @@
                 <p>{{ inventory_object.product.taking_orders }}</p>
             </div>
             <div class="product_details">
+                {% if inventory_object.number_in_stock == 0 %}
+                    <div class="product_details">
+                        <img src="/static/assets/misc/skull_01b.png" alt="Skull icon, warning of low stock!">
+                    </div>
+                {% elif inventory_object.number_in_stock <= 10 %}
+                    <div class="product_details">
+                        <img src="/static/assets/misc/skull_01a.png" alt="Skull icon, warning of low stock!">
+                    </div>
+                {% endif %}
                 <p>Stock Holding:</p>
                 <p>{{ inventory_object.number_in_stock }}</p>
             </div>
             <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/edit_stock_holding" method="POST">
                 <input type="image" value="selected_id" class="item_icon" src="/static/assets/misc/coin_05d.png" alt="Buy more inventory into stock holding">
             </form>
-
         </div>
+        
+        <section class="product_details_container_row">
+            <!-- dump stock -->
+            <h3>Dump Stock</h3>
+            <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/dump_stock" method="POST">
+                <input type="image" value="selected_id" class="item_icon" src="/static/assets/misc/skull_01a.png" alt="Image of a book, click to edit inventory item">
+            </form>
+
+            <!-- delete inventory -->
+            <h3>Delete Inventory</h3>
+            <form class="item_container" action="/shop/inventory/{{ inventory_object.id }}/delete" method="POST">
+                <input type="image" value="selected_id" class="item_icon" src="/static/assets/misc/skull_01b.png" alt="Image of a book, click to edit inventory item">
+            </form>
+        </section>
     </div>
 
 {% endblock %}

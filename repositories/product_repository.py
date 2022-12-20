@@ -42,5 +42,7 @@ def get_by_id(product_object_id):
     values = [product_object_id]
     query_results = run_sql(sql, values)
     query = query_results[0]
+    manufacturer_object = manu_rep.get_by_id(query['manufacturer_object_id'])
+
     return Product(query['name'], query['description'], query['model'], query['type'], query['combat_strength'],
-    query['manufacturer_object_id'], query['taking_orders'], query['wholesale_cost'], query['id'])
+    manufacturer_object, query['taking_orders'], query['wholesale_cost'], query['id'])

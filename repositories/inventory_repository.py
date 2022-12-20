@@ -70,4 +70,7 @@ def get_by_id(input_id):
     query_result['id'])
     return result
 
-
+def delete(inventory_id):
+    sql = "DELETE  FROM inventory WHERE id = %s"
+    values = [inventory_id]
+    run_sql(sql, values)
